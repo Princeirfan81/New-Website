@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Rare Wear Admin</title><link rel="icon" href="assets/logo.png"><link rel="stylesheet" href="styles.css"><style>
+body{background:#0b0b0b}.admin-wrap{max-width:1200px;margin:auto;padding:35px 5vw}.admin-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}.admin-top h1{font-family:Anton;font-size:45px;margin:0}.panel{background:#111;border:1px solid #292929;border-radius:14px;padding:25px;margin:18px 0}.panel h2{font-size:22px;margin-top:0}.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.form-grid .full{grid-column:1/-1}.admin input,.admin textarea,.admin select{width:100%;background:#080808;color:#fff;border:1px solid #3a3a3a;border-radius:7px;padding:11px}.admin label{font-size:12px;color:#aaa;display:block;margin-bottom:5px}.admin-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}.notice{padding:12px;border:1px solid #46350e;background:#17130a;border-radius:8px;color:#dcb44b;font-size:13px}.product-admin{display:grid;grid-template-columns:100px 1fr auto;gap:15px;align-items:center;border-top:1px solid #252525;padding:15px 0}.product-admin img{width:100px;height:80px;object-fit:cover;border-radius:8px}.mini-btn{padding:8px 10px;border:1px solid #444;background:#171717;color:#ddd;border-radius:6px;cursor:pointer}.mini-btn.danger{border-color:#733;color:#f88}.hidden{display:none}@media(max-width:700px){.form-grid{grid-template-columns:1fr}.form-grid .full{grid-column:auto}.product-admin{grid-template-columns:70px 1fr}.product-admin .actions{grid-column:1/-1}.product-admin img{width:70px;height:65px}}
+</style></head>
+<body class="admin">
+<header class="site-header"><a class="brand" href="index.html"><img src="assets/logo.png"><span><b>RARE</b><small>ADMIN PANEL</small></span></a><nav style="display:flex"><a href="index.html">View Website</a></nav></header>
+<div class="admin-wrap">
+<div id="loginBox" class="panel" style="max-width:480px;margin:70px auto">
+  <span class="eyebrow">SECURE EDITOR</span><h1>Admin Login</h1><p style="color:#aaa">Default password: <b style="color:#e5ae18">rare123</b> (change it after login).</p>
+  <input id="loginPass" type="password" placeholder="Admin password">
+  <button class="btn gold" style="margin-top:12px;width:100%" onclick="login()">Enter Admin</button>
+  <p id="loginErr" style="color:#f66"></p>
+</div>
+<div id="dashboard" class="hidden">
+  <div class="admin-top"><div><span class="eyebrow">RARE WEAR</span><h1>Website Editor</h1></div><div class="admin-actions"><a class="btn ghost" href="index.html">View Website</a><button class="btn gold" onclick="saveAll()">Save Changes</button></div></div>
+  <div class="notice">This is a self-contained website editor. Changes are saved in this browser. Use <b>Export Backup</b> to keep a copy before moving to another computer or hosting setup.</div>
+  <section class="panel"><h2>Business Details</h2><div class="form-grid">
+    <div><label>Brand Name</label><input id="brand"></div><div><label>Sub-brand</label><input id="subbrand"></div>
+    <div><label>Phone / WhatsApp</label><input id="phone"></div><div><label>Instagram username</label><input id="instagram"></div>
+    <div class="full"><label>Address</label><input id="address"></div>
+    <div><label>Hero Title</label><input id="heroTitle"></div><div><label>Hero Text</label><input id="heroText"></div>
+    <div class="full"><label>Footer Message</label><input id="footerText"></div>
+    <div><label>Change Admin Password</label><input id="adminPassword" type="password" placeholder="New password"></div>
+  </div></section>
+  <section class="panel"><h2>Banner / Main Photo</h2><p style="color:#aaa">Upload a new banner and it will replace the current homepage banner.</p><input id="bannerFile" type="file" accept="image/*"><div id="bannerPreview" style="margin-top:12px"></div></section>
+  <section class="panel"><h2>Products</h2><div class="admin-actions"><button class="btn gold" onclick="newProduct()">+ Add New Product</button></div><div id="productsAdmin"></div></section>
+  <section class="panel"><h2>Backup & Restore</h2><div class="admin-actions"><button class="btn ghost" onclick="exportData()">Export Backup</button><label class="btn ghost" style="cursor:pointer">Import Backup<input id="importFile" type="file" accept=".json" class="hidden"></label><button class="mini-btn danger" onclick="resetData()">Reset Demo Data</button></div></section>
+</div>
+</div>
+<script src="admin.js"></script></body></html>
